@@ -5,6 +5,7 @@ class Bundle
   def initialize format
     @format = format
     @bundles = get_bundles_by_format
+    @qty_per_bundle
   end
   
   private
@@ -24,17 +25,25 @@ class Bundle
   end
 
   public 
-  def get_qty_per_bundle qty
+  def get_qty_per_bundle
+    puts @qty_per_bundle.to_s
+    @qty_per_bundle
+  end
+
+  public 
+  def cal_qty_per_bundle qty
     bundle_bases = @bundles.keys.map(&:to_i).sort { |k1, k2| k1 > k2 ? -1 : 1 }
-    qty_per_bundle = get_bundle_combo(bundle_bases, qty, []).map.with_index { | qty, i | [ bundle_bases[i].to_s, qty ] }
-    # cal_price_per_bundle qty_per_bundle
-    puts qty_per_bundle.to_s
-    qty_per_bundle
+    @qty_per_bundle = get_bundle_combo(bundle_bases, qty, []).map.with_index { | qty, i | [ bundle_bases[i].to_s, qty ] }
+    self
   end
 
   public
-  def cal_price_per_bundle bundles
-    Hash[bundles.map { | k, v | [k, [v, @bundles[k] * v]] }]
+  def cal_price_per_bundle given_bundle = nil
+    if given_bundle != nil
+        return Hash[given_bundle.map { | k, v | [k, [v, @bundles[k] * v]] }]
+      else
+        return Hash[@qty_per_bundle.map { | k, v | [k, [v, @bundles[k] * v]] }]
+    end
   end
 
   private 
@@ -60,10 +69,5 @@ class Bundle
       probe_bundle_combo bundle_bases, mod, combo
     end
   end
-
-  public
-  def to_s
-    "Bunbles for: #{@format}"
-  end
-
+  
 end
