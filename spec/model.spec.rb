@@ -95,6 +95,11 @@ describe Bundle do
     it "returns correct qty per bundle for an more varied order of format VID" do
       expect(@vid_bdl.cal_qty_per_bundle(13).get_qty_per_bundle).to match_array [["9", 0], ["5", 2], ["3", 1]]
     end
+    # "Cannot provide a combo deal for given qty"
+    it "raises 'Cannot provide a combo deal for given qty' for invalid order qty" do
+      expect {@vid_bdl.cal_qty_per_bundle(16).get_qty_per_bundle}.to raise_error(RuntimeError, "Cannot provide a combo deal for given qty")
+    end
+
   end
 
   describe ".cal_price_per_bundle" do

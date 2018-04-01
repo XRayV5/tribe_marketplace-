@@ -26,7 +26,6 @@ class Bundle
 
   public 
   def get_qty_per_bundle
-    puts @qty_per_bundle.to_s
     @qty_per_bundle
   end
 
@@ -34,6 +33,7 @@ class Bundle
   def cal_qty_per_bundle qty
     bundle_bases = @bundles.keys.map(&:to_i).sort { |k1, k2| k1 > k2 ? -1 : 1 }
     @qty_per_bundle = get_bundle_combo(bundle_bases, qty, []).map.with_index { | qty, i | [ bundle_bases[i].to_s, qty ] }
+    @qty_per_bundle.select! { | (bundle, qty) | qty != 0 }
     self
   end
 
@@ -51,6 +51,9 @@ class Bundle
     step_combo = probe_bundle_combo(bundle_bases.clone, qty, combo)
     if step_combo == nil
       combo = Array.new(bundle_bases.length - combo.length + 1, 0)
+      if bundle_bases[1..-1].empty? 
+        raise "Cannot provide a combo deal for given qty" 
+      end
       get_bundle_combo(bundle_bases[1..-1], qty, combo)
     else
       return step_combo
