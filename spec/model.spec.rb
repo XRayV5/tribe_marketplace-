@@ -40,7 +40,7 @@ describe Bundle do
     end
 
     it "returns correct qty per bundle for an simple order of format IMG" do
-      expect(@img_bdl.cal_qty_per_bundle(5).get_qty_per_bundle).to match_array [["10", 0], ["5", 1]]
+      expect(@img_bdl.cal_qty_per_bundle(5).get_qty_per_bundle).to match_array [["5", 1]]
     end
 
     it "returns correct qty per bundle for even order of format IMG" do
@@ -58,7 +58,7 @@ describe Bundle do
     end
 
     it "returns correct qty per bundle for an simple order of format Flac" do
-      expect(@flac_bdl.cal_qty_per_bundle(6).get_qty_per_bundle).to match_array [["9", 0], ["6", 1]]
+      expect(@flac_bdl.cal_qty_per_bundle(6).get_qty_per_bundle).to match_array [["6", 1]]
     end
 
     it "returns correct qty per bundle for even order of format Flac" do
@@ -66,7 +66,7 @@ describe Bundle do
     end
 
     it "returns correct qty per bundle for an varied order of format Flac" do
-      expect(@flac_bdl.cal_qty_per_bundle(12).get_qty_per_bundle).to match_array [["9", 1], ["6", 0], ["3", 1]]
+      expect(@flac_bdl.cal_qty_per_bundle(12).get_qty_per_bundle).to match_array [["9", 1], ["3", 1]]
     end
 
     it "returns correct qty per bundle for an more varied order of format Flac" do
@@ -81,11 +81,11 @@ describe Bundle do
     end
 
     it "returns correct qty per bundle for an simple order of format VID" do
-      expect(@vid_bdl.cal_qty_per_bundle(3).get_qty_per_bundle).to match_array [["9", 0], ["5", 0], ["3", 1]]
+      expect(@vid_bdl.cal_qty_per_bundle(3).get_qty_per_bundle).to match_array [["3", 1]]
     end
 
     it "returns correct qty per bundle for even order of format VID" do
-      expect(@vid_bdl.cal_qty_per_bundle(8).get_qty_per_bundle).to match_array [["9", 0], ["5", 1], ["3", 1]]
+      expect(@vid_bdl.cal_qty_per_bundle(8).get_qty_per_bundle).to match_array [["5", 1], ["3", 1]]
     end
 
     it "returns correct qty per bundle for an varied order of format VID" do
@@ -93,7 +93,7 @@ describe Bundle do
     end
 
     it "returns correct qty per bundle for an more varied order of format VID" do
-      expect(@vid_bdl.cal_qty_per_bundle(13).get_qty_per_bundle).to match_array [["9", 0], ["5", 2], ["3", 1]]
+      expect(@vid_bdl.cal_qty_per_bundle(13).get_qty_per_bundle).to match_array [["5", 2], ["3", 1]]
     end
     # "Cannot provide a combo deal for given qty"
     it "raises 'Cannot provide a combo deal for given qty' for invalid order qty" do
