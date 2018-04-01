@@ -34,66 +34,66 @@ describe Bundle do
     end
   end
   
-  xdescribe "Bundle.new(\"IMG\").get_qty_per_bundle" do
+  describe "Bundle.new(\"IMG\").cal_qty_per_bundle.get_qty_per_bundle" do
     before :all do
       @img_bdl = Bundle.new("IMG")
     end
 
     it "returns correct qty per bundle for an simple order of format IMG" do
-      expect(@img_bdl.get_qty_per_bundle(5)).to match_array [["10", 0], ["5", 1]]
+      expect(@img_bdl.cal_qty_per_bundle(5).get_qty_per_bundle).to match_array [["10", 0], ["5", 1]]
     end
 
     it "returns correct qty per bundle for even order of format IMG" do
-      expect(@img_bdl.get_qty_per_bundle(15)).to match_array [["10", 1], ["5", 1]]
+      expect(@img_bdl.cal_qty_per_bundle(15).get_qty_per_bundle).to match_array [["10", 1], ["5", 1]]
     end
 
     it "returns correct qty per bundle for an varied order of format IMG" do
-      expect(@img_bdl.get_qty_per_bundle(25)).to match_array [["10", 2], ["5", 1]]
+      expect(@img_bdl.cal_qty_per_bundle(25).get_qty_per_bundle).to match_array [["10", 2], ["5", 1]]
     end
   end
 
-  xdescribe "Bundle.new(\"Flac\").get_qty_per_bundle" do
+  describe "Bundle.new(\"Flac.cal_qty_per_bundle\").get_qty_per_bundle" do
     before :all do
       @flac_bdl = Bundle.new("Flac")
     end
 
     it "returns correct qty per bundle for an simple order of format Flac" do
-      expect(@flac_bdl.get_qty_per_bundle(6)).to match_array [["9", 0], ["6", 1]]
+      expect(@flac_bdl.cal_qty_per_bundle(6).get_qty_per_bundle).to match_array [["9", 0], ["6", 1]]
     end
 
     it "returns correct qty per bundle for even order of format Flac" do
-      expect(@flac_bdl.get_qty_per_bundle(15)).to match_array [["9", 1], ["6", 1]]
+      expect(@flac_bdl.cal_qty_per_bundle(15).get_qty_per_bundle).to match_array [["9", 1], ["6", 1]]
     end
 
     it "returns correct qty per bundle for an varied order of format Flac" do
-      expect(@flac_bdl.get_qty_per_bundle(12)).to match_array [["9", 1], ["6", 0], ["3", 1]]
+      expect(@flac_bdl.cal_qty_per_bundle(12).get_qty_per_bundle).to match_array [["9", 1], ["6", 0], ["3", 1]]
     end
 
     it "returns correct qty per bundle for an more varied order of format Flac" do
-      expect(@flac_bdl.get_qty_per_bundle(24)).to match_array [["9", 2], ["6", 1]]
+      expect(@flac_bdl.cal_qty_per_bundle(24).get_qty_per_bundle).to match_array [["9", 2], ["6", 1]]
     end
 
   end
   
-  describe "Bundle.new(\"Flac\").get_qty_per_bundle" do
+  describe "Bundle.new(\"Flac.cal_qty_per_bundle\").get_qty_per_bundle" do
     before :all do
       @vid_bdl = Bundle.new("VID")
     end
 
     it "returns correct qty per bundle for an simple order of format VID" do
-      expect(@vid_bdl.get_qty_per_bundle(3)).to match_array [["9", 0], ["5", 0], ["3", 1]]
+      expect(@vid_bdl.cal_qty_per_bundle(3).get_qty_per_bundle).to match_array [["9", 0], ["5", 0], ["3", 1]]
     end
 
     it "returns correct qty per bundle for even order of format VID" do
-      expect(@vid_bdl.get_qty_per_bundle(8)).to match_array [["9", 0], ["5", 1], ["3", 1]]
+      expect(@vid_bdl.cal_qty_per_bundle(8).get_qty_per_bundle).to match_array [["9", 0], ["5", 1], ["3", 1]]
     end
 
     it "returns correct qty per bundle for an varied order of format VID" do
-      expect(@vid_bdl.get_qty_per_bundle(17)).to match_array [["9", 1], ["5", 1], ["3", 1]]
+      expect(@vid_bdl.cal_qty_per_bundle(17).get_qty_per_bundle).to match_array [["9", 1], ["5", 1], ["3", 1]]
     end
 
     it "returns correct qty per bundle for an more varied order of format VID" do
-      expect(@vid_bdl.get_qty_per_bundle(13)).to match_array [["9", 0], ["5", 2], ["3", 1]]
+      expect(@vid_bdl.cal_qty_per_bundle(13).get_qty_per_bundle).to match_array [["9", 0], ["5", 2], ["3", 1]]
     end
   end
 
