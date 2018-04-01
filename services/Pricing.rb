@@ -11,7 +11,6 @@ class Pricing
 
   private
   def cal_combo_total_price bundle_combo_price
-    puts bundle_combo_price.to_s
     bundle_combo_price.reduce(0) { |sum, (k ,v)| sum + v[1] }
   end
   

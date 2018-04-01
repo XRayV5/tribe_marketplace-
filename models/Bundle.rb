@@ -1,4 +1,4 @@
-require_relative '../db/db_helpers'
+require_relative '../utils/data_helpers'
 
 class Bundle
 
